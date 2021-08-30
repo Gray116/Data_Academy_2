@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상세보기</title>
+     {% load static %}
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    <hr>
+    <p> Post on {{ post.created }} by {{ post.author }}</p>
+    <hr>
+    {% if post.head_image %}
+        <img src="{{post.head_image.url}}" alt="기사사진" width="900" height="400">
+    {% else %}
+        <img src="{% static 'blog/img/noImg.png' %}" alt="" width="900" height="400">
+    {% endif %}
+    <p>{{post.content}}</p>
+    <button onclick="location = '/blog'">목록</button>
+</body>
+</html>
