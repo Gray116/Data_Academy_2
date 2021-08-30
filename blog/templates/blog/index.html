@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+</head>
+<body>
+    {% for post in posts %}
+        {% if post.head_image %}
+            <img src="{{post.head_image.url}}" alt="기사사진" width="750" height="300">
+        {% else %}
+            <img src="{% static 'blog/img/noImg.png' %}" alt="" width="750" height="300">
+        {% endif %}
+        <h1>{{post.pk}} : {{post.title}}</h1>
+        <h4>
+            {{post.content | truncatewords:20}}
+            <a href="{% url 'detail' post.pk %}">Read more...</a>
+        </h4>
+        <h4>Post on {{post.created}} by {{post.author}}</h4>
+        <hr color="red">
+        <br><br>
+    {% endfor %}
+</body>
+</html>
